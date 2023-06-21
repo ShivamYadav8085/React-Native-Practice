@@ -108,8 +108,10 @@ class Container extends Component {
         return <View style={styles.container}>
             <Text style={{marginBottom:20}}>Total Payable ammount {"->"+this.state.total}</Text>
             <ProductList allProducts={this.state.productList} onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct}></ProductList>
-            <Text>Cart</Text>
-            <Cart productDetails={this.state.productDetailsInCart}  onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct}></Cart>
+            <View style={{borderTopColor:"red", borderTopEndRadius:20, borderTopWidth:5}}>
+            <Text >Cart</Text>
+            </View>
+            <Cart allProducts={this.state.productList} productDetails={this.state.productDetailsInCart} onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct} total={this.state.total}></Cart>
         </View>
     }
 }
