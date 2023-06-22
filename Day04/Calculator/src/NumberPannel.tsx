@@ -1,6 +1,7 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
 interface IProp{
+    currentValue:string,
     onInput:Function,
     onClear:Function
 }
@@ -16,7 +17,7 @@ const NumberPannel = (props:IProp)=>{
         numColumns={4}
         renderItem={({item})=>{
             return <View style={{margin:40}}>
-                <TouchableOpacity onPress={()=>props.onInput(item)}>
+                <TouchableOpacity onPress={()=>props.onInput(props.currentValue+item)}>
                 <Text style={{fontSize:25}}>{item}</Text>
                 </TouchableOpacity>
             </View>
