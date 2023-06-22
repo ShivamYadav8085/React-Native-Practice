@@ -104,14 +104,25 @@ class Container extends Component {
             }
         })
     }
+    handleCartReset=()=>{
+        this.setState((prev:{productList:IProduct[],productDetailsInCart:IProductDetailsInCart[],total:number})=>{
+            prev.productDetailsInCart=[]
+            prev.total=0;
+            return prev;
+        })
+    }
     render(){
         return <View style={styles.container}>
-            <Text style={{marginBottom:20}}>Total Payable ammount {"->"+this.state.total}</Text>
-            <ProductList allProducts={this.state.productList} onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct}></ProductList>
-            <View style={{borderTopColor:"red", borderTopEndRadius:20, borderTopWidth:5}}>
-            <Text >Cart</Text>
-            </View>
-            <Cart allProducts={this.state.productList} productDetails={this.state.productDetailsInCart} onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct} total={this.state.total}></Cart>
+                <Text style={{marginBottom:25,fontSize:25,fontWeight:"bold"}}>Product List</Text>
+                <Text style={{marginBottom:20,fontSize:15}}>Total Payable ammount {"->  \u20B9"+this.state.total}</Text>
+                <ProductList allProducts={this.state.productList} onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct}></ProductList>
+                <View style={{borderTopColor:"red",  borderTopWidth:5}}>
+                <Text style={{fontSize:22, fontWeight:"bold"}}>Cart</Text>
+                </View>
+                <Cart allProducts={this.state.productList} productDetails={this.state.productDetailsInCart} 
+                onAddingProduct={this.handleAdd} onRemovingProduct={this.handleRemoveProduct} total={this.state.total}
+                onResetCart={this.handleCartReset}
+                ></Cart>
         </View>
     }
 }
