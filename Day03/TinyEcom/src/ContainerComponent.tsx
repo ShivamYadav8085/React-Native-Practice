@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:"flex-end",
-        marginTop:80,
+        // marginTop:80,
         borderRadius:10,
         marginHorizontal:24,
         paddingRight: 24,

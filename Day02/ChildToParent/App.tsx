@@ -29,7 +29,7 @@ function App(): JSX.Element {
 
   return (
     <View style={{flex:1, justifyContent:"center",alignItems:"center"}}>
-      <Text>Child to Parent</Text>
+      <Text style={{fontSize:32}}>Add Your Task</Text>
       <DisplayValue></DisplayValue>
     </View>
   );

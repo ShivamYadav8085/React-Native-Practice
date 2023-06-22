@@ -36,9 +36,11 @@ function App(): JSX.Element {
 
 
   return (
-    <ScrollView>
-      <Container/>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <Container/>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
