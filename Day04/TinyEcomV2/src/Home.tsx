@@ -7,7 +7,8 @@ export interface IProduct{
     id:number,
     name:string,
     price:number,
-    stock:number
+    stock:number,
+    image?:string
 }
 export interface IProductDetailsInCart{
     productId:number,
@@ -23,31 +24,36 @@ const Home = ()=>{
             id:1,
             name:"IPhone",
             price:1400000,
-            stock:2
+            stock:2,
+            image:"https://pixabay.com/get/g968caa2bbf2eac461a036f03bc7b61db4af15fb267015210915792569601242f05921e895a9173d01b99595004defbeb_640.jpg"
         },
             {
             id:2,
             name:"Mac",
             price:2400000,
-            stock:5
+            stock:5,
+            image:"https://images.pexels.com/photos/38568/apple-imac-ipad-workplace-38568.jpeg"
         },
             {
             id:3,
             name:"Bottle",
             price:500,
-            stock:1
+            stock:1,
+            image:"https://images.pexels.com/photos/1342529/pexels-photo-1342529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
             {
             id:4,
             name:"Mug",
             price:670,
-            stock:7
+            stock:7,
+            image:"https://images.pexels.com/photos/1207918/pexels-photo-1207918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
             {
             id:5,
             name:"Ear Buds",
             price:50000,
-            stock:0
+            stock:3,
+            image:"https://images.pexels.com/photos/11587597/pexels-photo-11587597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         },
     ])
 

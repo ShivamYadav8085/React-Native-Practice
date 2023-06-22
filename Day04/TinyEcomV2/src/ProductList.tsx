@@ -1,4 +1,4 @@
-import { Button, FlatList, Text, View } from "react-native";
+import { Button, FlatList, Image, Text, View } from "react-native";
 import { IProduct } from "./Home";
 
 interface IProductList{
@@ -17,6 +17,7 @@ const ProductList = (props:IProductList)=>{
                 <Text>Price: { ' \u20B9'+item.price } </Text>
                 <Text>Left: {item.stock}</Text>
             </View>   
+            <Image source={{uri:item.image}} height={100} width={80} alt="Problem occured while loading image"/>
             <View style={{flexDirection:"row"}}>
                     <Button title="+" onPress={()=>props.onAddingProduct(item.id)}/>
                     <Button title="-" onPress={()=>props.onRemovingProduct(item.id)}/>

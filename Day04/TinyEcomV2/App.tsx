@@ -8,24 +8,23 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  ImageBackground,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
 import Home from './src/Home';
 
 
 
 
+
 function App(): JSX.Element {
   return (
+    <ImageBackground  source={require('./src/assets/images/bg.jpg')}>
     <SafeAreaView >
       <Home/>
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 

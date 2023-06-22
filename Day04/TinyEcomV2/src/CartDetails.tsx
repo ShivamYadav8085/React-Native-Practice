@@ -1,4 +1,4 @@
-import {  Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import {  Button, FlatList, Image, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { IProduct, IProductDetailsInCart } from "./Home";
 
 
@@ -24,6 +24,8 @@ const Cart = (props:ICart)=>{
                 <Text>Name: {productDetail?.name}</Text>
                 <Text>Price: {' \u20B9'+productDetail?.price}</Text>
                 <Text>Quantity: {item.quantity}</Text>
+            <Image source={{uri:productDetail?.image}} height={100} width={80} alt="Problem occured while loading image"/>
+
                 </View>
                     <View style={{flexDirection:"row"}}>
                         <Button title="+" onPress={()=>props.onAddingProduct(item.productId)}/>
