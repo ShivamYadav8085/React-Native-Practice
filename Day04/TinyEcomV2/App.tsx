@@ -6,12 +6,13 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
+
+import BgImage from "./src/assets/images/bg.jpg"
 import Home from './src/Home';
 
 
@@ -20,7 +21,7 @@ import Home from './src/Home';
 
 function App(): JSX.Element {
   return (
-    <ImageBackground  source={require('./src/assets/images/bg.jpg')}>
+    <ImageBackground  source={BgImage}>
     <SafeAreaView >
       <Home/>
     </SafeAreaView>

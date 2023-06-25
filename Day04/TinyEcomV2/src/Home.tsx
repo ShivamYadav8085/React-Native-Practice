@@ -57,11 +57,6 @@ const Home = ()=>{
         },
     ])
 
-    useEffect(()=>{
-        console.log(productDetailsInCart)
-        console.log(totalPayableAmt)
-    },[products,productDetailsInCart])
-
 
     const handleAdd=(itemId:number)=>{
         setProductDetailsInCart((prev:IProductDetailsInCart[])=>{
