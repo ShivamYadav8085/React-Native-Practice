@@ -54,13 +54,32 @@ export const styles= StyleSheet.create({
         left:"25%",
     }
     ,
+    registerButton:{
+        position:"absolute",
+        top:"105%",
+        left:"25%"
+    }
+    ,
     textWhite:{
         color:"white",
         fontWeight:"bold"
     },
+    profilePicture:{
+        height:80,
+        width:80,
+        borderRadius:100
+    },
     /**Icon */
+    iconHeightWidth:{
+        height:20,
+        width:20
+    },
     icons:{
         position:'relative',
         top:"52%"
+    },
+    cameraIcon:{
+        bottom:10,
+        left:30
     }
 });
