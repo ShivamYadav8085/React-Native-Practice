@@ -3,32 +3,31 @@ import React, { useRef, useState } from 'react'
 
 const App = () => {
   const value = useState(new Animated.Value(0))[0];
-  const moveBall = ()=>{
+  const changeColor = ()=>{
     // Animated.timing(value,{
     //   toValue:{x:100,y:100},
     //   duration:1000,
     //   useNativeDriver:false
     // }).start()
     Animated.timing(value,{
-      toValue:100,
+      toValue:1000,
       duration:1000,
       useNativeDriver:false
     }).start()
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
 <Animated.View style={{
-    width:100,
-    height:100,
-    borderRadius:100,
+
+    flex:1,
     backgroundColor:value.interpolate({
-      inputRange:[0,100],
-      outputRange:["green","red"]
+      inputRange:[0,500,1000],
+      outputRange:["green","red","yellow"]
     })
   }}> 
 
 </Animated.View>
-<TouchableOpacity onPress={moveBall}>
+<TouchableOpacity onPress={changeColor}>
     <Text>Click Me</Text>
 </TouchableOpacity>
     </SafeAreaView>
