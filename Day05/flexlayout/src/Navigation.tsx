@@ -1,8 +1,7 @@
-import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Register from './components/register';
+import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Setting from './components/Settings';

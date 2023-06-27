@@ -1,11 +1,25 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { styles } from './styles/style'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-const Home = () => {
+
+
+type Props = NativeStackScreenProps<any,"Home">;
+
+const Home = ({navigation}:Props) => {
   return (
     <View style={[styles.container]}>
-      <Text>Home</Text>
+      <View style={[styles.innerContainer,{justifyContent:"center"}]}>
+            <View style={[styles.box,{height:400}]}>
+                    <Text style={styles.titleText}>Home</Text>
+  
+                    <TouchableOpacity style={[styles.button,styles.registerButton]} onPress={()=>navigation.navigate("Settings")}>
+                        <Text style={styles.textWhite}>Setting</Text>
+                    </TouchableOpacity>
+            </View>
+
+        </View>
     </View>
   )
 }

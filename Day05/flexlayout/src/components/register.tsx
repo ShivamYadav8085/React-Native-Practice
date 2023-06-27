@@ -1,8 +1,23 @@
 import { View, Text, Image, TextInput, Button, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { styles } from './styles/style'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-const Register = (props:any) => {
+type Props = NativeStackScreenProps<any,"Register">;
+
+export type User = {
+    username:string,
+    address:string,
+    mobileno:string
+}
+
+const Register = ({navigation}:Props) => {
+    const [user,setUser] = useState<User>({username:"",address:"",mobileno:""});
+    const handleUserInfo = (property:string,value:string)=>{
+        setUser(prevUser=>{
+            return {...prevUser,[property]:value}
+        })
+    }
   return (
     <View style={[styles.container]}>
         <View style={[styles.innerContainer,{justifyContent:"center"}]}>
@@ -16,21 +31,21 @@ const Register = (props:any) => {
                     </View>
                     <View>
                         <Image style={[styles.icons,styles.iconHeightWidth]} source={{uri:"https://cdn-icons-png.flaticon.com/128/1077/1077063.png"}}/>
-                        <TextInput style={styles.textInput} placeholder='User Name'/>
+                        <TextInput style={styles.textInput} placeholder='User Name' value={user.username} onChangeText={(value)=>handleUserInfo("username",value)}/>
                     </View>      
                     <View>
                         <Image style={[styles.icons,styles.iconHeightWidth]} source={{uri:"https://cdn-icons-png.flaticon.com/128/1295/1295181.png"}}/>
-                        <TextInput style={styles.textInput} placeholder='Address'/>
+                        <TextInput style={styles.textInput} placeholder='Address' value={user.address} onChangeText={(value)=>handleUserInfo("address",value)}/>
                     </View>      
                     <View style={{marginBottom:50}}>
                         <Image style={[styles.icons,styles.iconHeightWidth]} source={{uri:"https://cdn-icons-png.flaticon.com/128/15/15874.png"}}/>
-                        <TextInput style={styles.textInput} placeholder='Mobile Number'/>
+                        <TextInput style={styles.textInput} placeholder='Mobile Number' value={user.mobileno} onChangeText={(value)=>handleUserInfo("mobileno",value)}/>
                     </View>      
-                    <TouchableOpacity style={[styles.button,styles.registerButton]} onPress={()=>props.navigation.navigate("Login")}>
+                    <TouchableOpacity style={[styles.button,styles.registerButton]} onPress={()=>navigation.navigate("Login",user)}>
                         <Text style={styles.textWhite}>Register</Text>
                     </TouchableOpacity>
             </View>
-        <TouchableOpacity  onPress={()=>props.navigation.navigate("Login")}><Text style={{fontSize:15,fontWeight:"bold",color:"blue",marginTop:70}}>Login</Text></TouchableOpacity>
+        <TouchableOpacity  onPress={()=>navigation.navigate("Login")}><Text style={{fontSize:15,fontWeight:"bold",color:"blue",marginTop:70}}>Login</Text></TouchableOpacity>
         </View>
 </View>
   )
