@@ -2,14 +2,11 @@ import { View, Text, Image, TextInput, Button, TouchableOpacity } from 'react-na
 import React, { useState } from 'react'
 import { styles } from './styles/style'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList, User } from '../Navigation';
 
-type Props = NativeStackScreenProps<any,"Register">;
+type Props = NativeStackScreenProps<RootStackParamList,"Register">;
 
-export type User = {
-    username:string,
-    address:string,
-    mobileno:string
-}
+
 
 const Register = ({navigation}:Props) => {
     const [user,setUser] = useState<User>({username:"",address:"",mobileno:""});
@@ -45,7 +42,7 @@ const Register = ({navigation}:Props) => {
                         <Text style={styles.textWhite}>Register</Text>
                     </TouchableOpacity>
             </View>
-        <TouchableOpacity  onPress={()=>navigation.navigate("Login")}><Text style={{fontSize:15,fontWeight:"bold",color:"blue",marginTop:70}}>Login</Text></TouchableOpacity>
+        <TouchableOpacity  onPress={()=>navigation.navigate("Login",user)}><Text style={{fontSize:15,fontWeight:"bold",color:"blue",marginTop:70}}>Login</Text></TouchableOpacity>
         </View>
 </View>
   )

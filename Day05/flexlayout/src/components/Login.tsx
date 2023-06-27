@@ -2,11 +2,11 @@ import { View, Text, Image, TextInput, Button, TouchableOpacity } from 'react-na
 import React from 'react'
 import { styles } from './styles/style'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { User } from './Register';
+import { RootStackParamList } from '../Navigation';
 
 
 
-type Props= NativeStackScreenProps<any,"Login">;
+type Props= NativeStackScreenProps<RootStackParamList,"Login">;
 
 const Login = ({navigation,route}:Props) => (
     <View style={[styles.container]}>

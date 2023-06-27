@@ -2,8 +2,9 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { styles } from './styles/style'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../Navigation';
 
-type Props = NativeStackScreenProps<any,"Settings">;
+type Props = NativeStackScreenProps<RootStackParamList,"Setting">;
 
 const Setting = ({navigation}:Props) => {
   return (

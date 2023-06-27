@@ -5,24 +5,38 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Setting from './components/Settings';
+import TabNavigation from './TabNavigation';
+
+
+export type User = {
+  username:string,
+  address:string,
+  mobileno:string
+}
+
+export type RootStackParamList = {
+  Register:undefined,
+  Home:undefined,
+  Login:User|undefined,
+  Setting:undefined
+}
 
 const Navigation = () => {
-  const [isAuthenticated,setIsAuthenticated] = useState<boolean>(true)
+  const [isAuthenticated,setIsAuthenticated] = useState<boolean>(false)
 
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Register'>
         {isAuthenticated?
                 (<Stack.Group>
-                <Stack.Screen name='Register' component={Register}/>
-               <Stack.Screen name='Login' component={Login}/>
-             </Stack.Group>):
-        (<Stack.Group>
-        <Stack.Screen name='Home' component={Home}/>
-        <Stack.Screen name='Settings' component={Setting}/>
-      </Stack.Group>)
+                  <Stack.Screen name='Register' component={Register}/>
+                  <Stack.Screen name='Login' component={Login}/>
+                </Stack.Group>):
+                (<Stack.Group>
+                  <Stack.Screen name='Home' component={TabNavigation} options={{headerShown:false}} />
+              </Stack.Group>)
       }
       </Stack.Navigator>
     </NavigationContainer>

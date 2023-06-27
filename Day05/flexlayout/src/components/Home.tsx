@@ -14,7 +14,7 @@ const Home = ({navigation}:Props) => {
             <View style={[styles.box,{height:400}]}>
                     <Text style={styles.titleText}>Home</Text>
   
-                    <TouchableOpacity style={[styles.button,styles.registerButton]} onPress={()=>navigation.navigate("Settings")}>
+                    <TouchableOpacity style={[styles.button,styles.registerButton]} onPress={()=>navigation.navigate("Setting")}>
                         <Text style={styles.textWhite}>Setting</Text>
                     </TouchableOpacity>
             </View>
