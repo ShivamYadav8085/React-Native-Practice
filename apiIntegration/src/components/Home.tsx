@@ -1,9 +1,10 @@
-import { View, Text, FlatList, TouchableOpacity} from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet} from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useCallback, useEffect, useState } from 'react'
 import axios, { all } from 'axios';
 import { RootParamList, TaskType } from '../Navigation';
 import { useFocusEffect } from '@react-navigation/native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 type Props=NativeStackScreenProps<RootParamList,"Home">;
 
@@ -45,41 +46,41 @@ const Home = ({navigation}:Props) => {
     <View>
       <FlatList data={allTask}
       ListHeaderComponent={()=>{
-        return <View style={{flex:1,flexDirection:'row', justifyContent:'space-around'}}>
-            <View>
-                <Text>ID</Text>
+        return <View style={[styles.tableData,{backgroundColor:"#3F2305"}]}>
+            <View style={{flex:1}}>
+                <Text style={{color:"white",fontWeight:"bold"}}>ID</Text>
             </View>
-            <View>
-                <Text>Task</Text>
+            <View style={{flex:1}}>
+                <Text style={{color:"white",fontWeight:"bold"}}>Task</Text>
             </View>
-            <View>
-                <Text>Status</Text>
+            <View style={{flex:1}}>
+                <Text style={{color:"white",fontWeight:"bold"}}>Status</Text>
             </View>
-            <View>
+            <View style={{flex:1}}>
                 <Text></Text>
-            </View>
-            <TouchableOpacity onPress={()=>navigation.navigate("Create")}>
-                <Text>Add</Text>
+            </View >
+            <TouchableOpacity onPress={()=>navigation.navigate("Create")} style={{flex:1}}>
+                <Text style={{color:"white",fontWeight:"bold"}}>Add</Text>
             </TouchableOpacity>
                 </View>
       }}
       keyExtractor={(item:TaskType,index:number)=>index+""}
-      renderItem={({item})=>{
-        return <View style={{flex:1,flexDirection:'row', justifyContent:'space-around'}}>
-            <View>
+      renderItem={({item,index})=>{
+        return <View style={[styles.tableData,{backgroundColor:index%2?"#F2EAD3":"#DFD7BF"}]}>
+            <View style={{flex:1}}>
                 <Text>{item.id}</Text>
             </View>
-            <View>
+            <View style={{flex:1}}>
                 <Text>{item.taskName}</Text>
             </View>
-            <View>
-                <Text>{item.isCompleted?"Completed":"Need to Do"}</Text>
+            <View style={{flex:1}}>
+        <BouncyCheckbox isChecked={item.isCompleted} disabled/>
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate("Update",item)}>
-                <Text>Update</Text>
+            <TouchableOpacity onPress={()=>navigation.navigate("Update",item)} style={{flex:1}}>
+                <Image style={styles.icon} source={{uri:"https://pics.freeicons.io/uploads/icons/png/9200365481558965373-64.png"}} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>handleDelete(item.id)}>
-                <Text>Delete</Text>
+            <TouchableOpacity onPress={()=>handleDelete(item.id)} style={{flex:1}}>
+                <Image style={styles.icon} source={{uri:"https://pics.freeicons.io/uploads/icons/png/2790131631558965374-64.png"}} />
             </TouchableOpacity>
             <Text></Text>
         </View>
@@ -87,5 +88,21 @@ const Home = ({navigation}:Props) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    icon:{
+        height:20,
+        width:20
+    },
+    tableData:{
+        padding:10,
+        flex:1,
+        flexDirection:'row', 
+        justifyContent:'space-around',
+        alignItems:"center",
+        borderWidth:1,
+        borderColor:"black"
+    }
+})
 
 export default Home
