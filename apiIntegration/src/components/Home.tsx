@@ -5,6 +5,7 @@ import axios, { all } from 'axios';
 import { RootParamList, TaskType } from '../Navigation';
 import { useFocusEffect } from '@react-navigation/native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { styles } from './styles/styles';
 
 type Props=NativeStackScreenProps<RootParamList,"Home">;
 
@@ -96,29 +97,6 @@ const Home = ({navigation}:Props) => {
   )
 }
 
-const styles = StyleSheet.create({
-    icon:{
-        height:20,
-        width:20
-    },
-    emptyListText:{
-        color:"#3F2305",
-        fontWeight:"bold"
-    },
-    tableHeading:{
-        color:"white",
-        fontWeight:"bold"
-    }
-    ,
-    tableData:{
-        padding:10,
-        flex:1,
-        flexDirection:'row', 
-        justifyContent:'space-around',
-        alignItems:"center",
-        borderWidth:1,
-        borderColor:"black"
-    }
-})
+
 
 export default Home

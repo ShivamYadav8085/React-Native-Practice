@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -6,6 +6,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 import { RootParamList, TaskType } from '../Navigation';
 import axios from 'axios';
+import { styles } from './styles/styles';
 
 type Props=NativeStackScreenProps<RootParamList,"Update">;
 
@@ -23,18 +24,16 @@ const EditTask = ({route,navigation}:Props) => {
         }
     } 
   return (
-    <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:"#DFD7BF"}}>
-      <View>
-        <View style={{height:300,width:300,backgroundColor:"#F2EAD3",borderRadius:20,shadowRadius:10,shadowColor:"black"}}>
-            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-                <TextInput value={taskDetail.taskName} onChangeText={(val)=>setUpdatedTask(prev=>({...prev,taskName:val}))}></TextInput>
-            <BouncyCheckbox isChecked={taskDetail.isCompleted} onPress={()=>setUpdatedTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
-            <TouchableOpacity onPress={handleUpdate}>
-                <Text>Update</Text>
+    <View style={styles.container}>
+        <View style={styles.card}>
+            <View style={styles.subCard}>
+                <TextInput style={styles.textInputOfSubCard} value={updatedTask.taskName} onChangeText={(val)=>setUpdatedTask(prev=>({...prev,taskName:val}))}></TextInput>
+            <BouncyCheckbox size={40}  text='Done' isChecked={taskDetail.isCompleted} onPress={()=>setUpdatedTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
+            <TouchableOpacity style={styles.cardButton} onPress={handleUpdate}>
+                <Text style={styles.cardButtonText}>Update</Text>
             </TouchableOpacity>
             </View>
         </View>
-      </View>
     </View>
   )
 }

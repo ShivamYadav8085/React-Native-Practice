@@ -24,7 +24,11 @@ const Stack = createNativeStackNavigator<RootParamList>()
 const Navigation = () => {
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='Home' screenOptions={{
+          headerStyle:{
+            backgroundColor:"#3F2305"
+          },headerTintColor:"white"
+        }}>
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='Update' component={EditTask}/>
             <Stack.Screen name='Create' component={Create}/>
