@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootParamList, TaskType } from '../Navigation';
 import axios from 'axios';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { styles } from './styles/styles';
 
 type Props=NativeStackScreenProps<RootParamList,"Create">;
 
@@ -25,13 +26,15 @@ const Create = ({navigation}:Props) => {
         }
     } 
   return (
-    <View>
-      <View>
-        <TextInput value={newTask?.taskName} onChangeText={(val)=>setNewTask(prev=>({...prev,taskName:val}))}></TextInput>
-        <BouncyCheckbox isChecked={newTask?.isCompleted} onPress={()=>setNewTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
-        <TouchableOpacity onPress={handleCreate}>
-            <Text>Post</Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <View style={styles.subCard}>
+          <TextInput style={styles.textInputOfSubCard} value={newTask?.taskName} onChangeText={(val)=>setNewTask(prev=>({...prev,taskName:val}))}></TextInput>
+          <BouncyCheckbox size={40} text='Done' isChecked={newTask?.isCompleted} onPress={()=>setNewTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
+          <TouchableOpacity style={styles.cardButton} onPress={handleCreate}>
+              <Text style={styles.cardButtonText}>Post</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
