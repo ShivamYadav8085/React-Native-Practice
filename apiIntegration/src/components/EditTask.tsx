@@ -15,9 +15,7 @@ const EditTask = ({route,navigation}:Props) => {
     const taskDetail = route.params as TaskType
     const [updatedTask,setUpdatedTask] = useState<TaskType>(taskDetail);
     const handleUpdate = async ()=>{
-        try{
-            console.log(updatedTask);
-            
+        try{            
         await axios.put(URL+updatedTask.id,updatedTask)
         navigation.navigate("Home")
         }catch(e){
@@ -25,13 +23,17 @@ const EditTask = ({route,navigation}:Props) => {
         }
     } 
   return (
-    <View>
+    <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:"#DFD7BF"}}>
       <View>
-        <TextInput value={taskDetail.taskName} onChangeText={(val)=>setUpdatedTask(prev=>({...prev,taskName:val}))}></TextInput>
-        <BouncyCheckbox isChecked={taskDetail.isCompleted} onPress={()=>setUpdatedTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
-        <TouchableOpacity onPress={handleUpdate}>
-            <Text>Update</Text>
-        </TouchableOpacity>
+        <View style={{height:300,width:300,backgroundColor:"#F2EAD3",borderRadius:20,shadowRadius:10,shadowColor:"black"}}>
+            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+                <TextInput value={taskDetail.taskName} onChangeText={(val)=>setUpdatedTask(prev=>({...prev,taskName:val}))}></TextInput>
+            <BouncyCheckbox isChecked={taskDetail.isCompleted} onPress={()=>setUpdatedTask(prev=>({...prev,isCompleted:!prev.isCompleted}))}/>
+            <TouchableOpacity onPress={handleUpdate}>
+                <Text>Update</Text>
+            </TouchableOpacity>
+            </View>
+        </View>
       </View>
     </View>
   )

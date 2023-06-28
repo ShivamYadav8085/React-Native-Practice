@@ -45,22 +45,29 @@ const Home = ({navigation}:Props) => {
   return (
     <View>
       <FlatList data={allTask}
+      ListEmptyComponent={()=>{
+        return <View style={[styles.tableData,{backgroundColor:"#F2EAD3"}]}>
+            <View style={{flex:1,alignItems:"center"}}>
+                <Text style={styles.emptyListText}>List is Empty</Text>
+            </View>
+        </View>
+      }}
       ListHeaderComponent={()=>{
         return <View style={[styles.tableData,{backgroundColor:"#3F2305"}]}>
             <View style={{flex:1}}>
-                <Text style={{color:"white",fontWeight:"bold"}}>ID</Text>
+                <Text style={styles.tableHeading}>ID</Text>
             </View>
             <View style={{flex:1}}>
-                <Text style={{color:"white",fontWeight:"bold"}}>Task</Text>
+                <Text style={styles.tableHeading}>Task</Text>
             </View>
             <View style={{flex:1}}>
-                <Text style={{color:"white",fontWeight:"bold"}}>Status</Text>
+                <Text style={styles.tableHeading}>Status</Text>
             </View>
             <View style={{flex:1}}>
                 <Text></Text>
             </View >
             <TouchableOpacity onPress={()=>navigation.navigate("Create")} style={{flex:1}}>
-                <Text style={{color:"white",fontWeight:"bold"}}>Add</Text>
+                <Text style={styles.tableHeading}>Add</Text>
             </TouchableOpacity>
                 </View>
       }}
@@ -94,6 +101,15 @@ const styles = StyleSheet.create({
         height:20,
         width:20
     },
+    emptyListText:{
+        color:"#3F2305",
+        fontWeight:"bold"
+    },
+    tableHeading:{
+        color:"white",
+        fontWeight:"bold"
+    }
+    ,
     tableData:{
         padding:10,
         flex:1,
