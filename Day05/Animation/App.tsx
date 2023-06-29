@@ -17,7 +17,7 @@ const App = () => {
     // }).start()
     Animated.timing(value,{
       toValue:1000,
-      duration:10000,
+      duration:1000,
       useNativeDriver:false
     }).start()
   }
@@ -28,8 +28,8 @@ const App = () => {
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:value.interpolate({
-      inputRange:[0,1000],
-      outputRange:[enable?"red":"green",enable?"green":"red"]
+      inputRange:[0,500,1000],
+      outputRange:[enable?"red":"green","yellow",enable?"green":"red"]
     })
   }}> 
   <Switch value={enable} onValueChange={handleSwitchChange}/>
