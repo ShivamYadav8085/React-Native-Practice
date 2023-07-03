@@ -4,4 +4,4 @@ type nameC={
     setName:Function
 }
 
-export const NameContext = createContext<any>("");
+export const NameContext = createContext<nameC>({name:"",setName:()=>{}});
